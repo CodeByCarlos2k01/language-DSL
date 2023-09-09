@@ -1,54 +1,33 @@
 # Projeto de Compiladores
 
 
-# Estrutura de Arquivos:
+# Do que se trata ?:
 
-Os arquivos deste projeto estão organizados nos seguintes arquivos e pastas:
-
-**src**: Programas em Java escritos pelo programador
-
-**src-gen**: Programas em Java gerados automaticamente pelo ANTLR ou outras ferramentas.
-
-**classes**: Arquivos .class gerados pela compilados dos códigos fontes.
-
-**antlr.jar**: Ferramenta ANTLR versão 4 baixada do site antlr.org
-
-**Expr.g4**: Linguagem de expressões desenvolvida na sala
-
-**input.exp**: Exemplo da linguagem
+Neste projeto, fizemos uma Linguagem Específica de Domínio(DSL) voltada para facilitar a realização de tarefas relacionadas a análises estatísticas. A DSL foi criada como parte de um projeto acadêmico com o objetivo de simplificar e agilizar o processo de análise de dados estatísticos, tornando-o mais acessível para usuários com diferentes níveis de experiência em estatística e programação.
 
 
-# Comandos para Compilar
+# Instruções para Compilação
 
-## 1. Compilar a descrição da linguagem fonte:
+## 1. Compilação da Descrição da Linguagem Fonte: 
 
 ```
 java -jar antlr.jar -o src-gen Expr.g4
 ```
-O comando acima executa o gerador ANTLR que converte a descrição da gramática (Expr.g4) em
-programas Java (Analisadores léxicos e sintáticos). Os códigos dos analisadores gerados serão armazendados na pasta src-gen.
+Ao executar este comando, o ANTLR irá ler o Expr.g4arquivo de gramática e gerar o código Java (analisadores e lexers) com base nas regras gramaticais definidas nesse arquivo. O código gerado será colocado no src-gen diretório.
 
 
-
-## 2. Compilar programas em Java:
-
+## 2. Compilação dos Programas em Java:
 
 ```
 javac -cp antlr.jar:. -d classes src/*.java src-gen/*.java
 ```
-O comando acima executa o compilador Java. O arquivo antlr.jar, que contem as bibliotecas
-runtime utilizadas pelo código gerado pelo antlr são adicionadas ao CLASSPATH. O compilador
-compila todos os arquivos java que estão no diretório "src" (arquivo escritos pelo programador)
-e no diretório "src-gen" (arquivos gerados automáticamente). 
+Este comando utiliza o compilador Java. O arquivo antlr.jar, que contém as bibliotecas de runtime permitidas para os códigos gerados pelo ANTLR, é adicionado ao CLASSPATH. O compilador processa todos os arquivos Java encontrados nos diretórios "src" (contendo os arquivos escritos pelo programador) e "src-gen" (contendo os arquivos gerados automaticamente). Os arquivos compilados serão armazenados no diretório "classes".
 
-O arquivos binários compilados gerados pelo javac serão armazenados no diretório classes.
-
-
-## 3. Executar o programa:
+## 3. Execução do Programa:
 
 ```
 java -cp antlr.jar:classes Main
 ```
 
-O comando acima executa a classe Main do compilador. Os arquivos binários das classes estão localizades no diretório "classes". Para a classe poder ser executada é necessário também incluir os arquivos do runtime do antlr.jar.
+Este comando executa a classe Main do compilador. Os arquivos binários das classes estão localizados no diretório "classes".
 
