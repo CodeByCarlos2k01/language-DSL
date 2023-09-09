@@ -32,11 +32,13 @@ java -cp antlr.jar:classes Main
 Este comando executa a classe Main do compilador. Os arquivos binários das classes estão localizados no diretório "classes".
 
 ## Equipe:
-### 1. Carlos Eduardo Cabral
-### 2. Ênio Ferreiro da Silva
-### 3. Lais Silva
-### 4. Pedro Lucas Hirschle
-### 5. Riquelme Lopes da Silva
+###     1. Carlos Eduardo Cabral
+###     2. Ênio Ferreiro da Silva
+###     3. Lais Silva
+###     4. Pedro Lucas Hirschle
+###     5. Riquelme Lopes da Silva
+
+
 
 > Carlos Eduardo Cabral de Farias
 
