@@ -3,9 +3,10 @@ grammar Expr;
 program: expr EOF;
 
 expr: expr expr+                                        #Comandos
-    | 'print' (op|cond|comp)                            #Print
-    | 'while' comp ':' expr ';'                         #Loop
-    | VAR '=' (cond|comp|op)                            #Igualdade
+    | 'print' (cond|comp|list)                          #Print
+    | 'while' comp ':' expr ';'                         #While
+    | 'for' '(' list ')' '->' VAR ':' expr ';'          #For
+    | VAR '=' (cond|comp|list)                          #Igualdade
     | VAR ('++'|'--')                                   #IncrementoDecremento
     | (op|cond)                                         #Operacao
     ;
@@ -16,12 +17,15 @@ cond: 'if' comp ':' expr ';' ('else' ':' expr ';')?     #Condicional
 comp: '(' comp ')'                                      #Parentese
     | comp 'and' comp                                   #And
     | comp 'or' comp                                    #Or
-    | op '==' op                                        #Igual
-    | op '!=' op                                        #Diferente
-    | op '<' op                                         #Menor
-    | op '<=' op                                        #MenorIgual
-    | op '>' op                                         #Maior
-    | op '>=' op                                        #MaiorIgual
+    | list '==' list                                    #Igual
+    | list '!=' list                                    #Diferente
+    | list '<' list                                     #Menor
+    | list '<=' list                                    #MenorIgual
+    | list '>' list                                     #Maior
+    | list '>=' list                                    #MaiorIgual
+    ;
+
+list: op (',' op)*                                      #Lista
     ;
 
 op:  '(' op ')'                                         #Parenteses
@@ -33,19 +37,19 @@ op:  '(' op ')'                                         #Parenteses
     | com                                               #Comando
     ;
 
-com:  'media' '(' com ')'                               #Media
-    | 'mediana' '(' com ')'                             #Mediana
-    | 'desvio_padrao' '(' com ')'                       #DPadrao
-    | 'min' '(' com ')'                                 #Minimo
-    | 'max' '(' com ')'                                 #Maximo
-    | 'variancia' '(' com ')'                           #Variancia
-    | 'moda' '(' com ')'                                #Moda
-    | NUM (',' NUM)*                                    #Lista
+com:  'media' '(' list ')'                              #Media
+    | 'mediana' '(' list ')'                            #Mediana
+    | 'desvio_padrao' '(' list ')'                      #DPadrao
+    | 'min' '(' list ')'                                #Minimo
+    | 'max' '(' list ')'                                #Maximo
+    | 'variancia' '(' list ')'                          #Variancia
+    | 'moda' '(' list ')'                               #Moda
+    | NUM                                               #Numero
     | func                                              #Funcao
     ;
 
-func: func '.add' '(' op ')'                            #Add
-    | func '.remove' '(' op ')'                         #Remove
+func: func '.add' '(' list ')'                          #Add
+    | func '.remove' '(' list ')'                       #Remove
     | func '.pop' ('(' ')')?                            #Pop
     | VAR                                               #Variavel
     ;
