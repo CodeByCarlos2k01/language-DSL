@@ -1,1 +1,11 @@
-(2 + 18)*(5+2)+x
+x = 0
+while x <= 6:
+    if x % 2 == 0:
+        y.add(x)
+    ; else:
+        z.add(x)
+    ;
+    x++
+;
+print y
+print z
