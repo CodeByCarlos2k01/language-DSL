@@ -20,6 +20,17 @@ class Main {
       return list;
     }
 
+    static int compareList(List<Double> l1, List<Double> l2) {
+      int menorTamanho = Math.min(l1.size(), l2.size());
+      for(int i = 0; i < menorTamanho; i++) {
+         if(l1.get(i) > l2.get(i)) return 1;
+         else if(l1.get(i) < l2.get(i)) return -1;
+      }
+      if(l1.size() < l2.size()) return 1;
+      else if(l1.size() > l2.size()) return -1;
+      else return 0;
+    }
+
     static List<Double> numbers = new ArrayList<>();
     static Map<String, List<Double>> memoria = new HashMap<>();
     public static List<Double> avalie(ParseTree t) {
@@ -34,8 +45,16 @@ class Main {
             case "Print":
                System.out.println(avalie(t.getChild(1)));
                return null;
-            case "Loop":
+            case "While":
                while(avalie(t.getChild(1)).equals(doubleToList(1.0))) avalie(t.getChild(3));
+               return null;
+            case "For":
+               for(int i = 0; i < t.getChild(2).getChildCount(); i++) {
+                  if(!t.getChild(2).getChild(i).getText().equals(",")) {
+                     memoria.put(t.getChild(5).getText(), avalie(t.getChild(2).getChild(i)));
+                     avalie(t.getChild(7));
+                  }
+               }
                return null;
             case "Igualdade":
                return memoria.put(t.getChild(0).getText(), avalie(t.getChild(2)));
@@ -66,13 +85,24 @@ class Main {
             case "Diferente":
                return !avalie(t.getChild(0)).equals(avalie(t.getChild(2))) ? doubleToList(1.0) : doubleToList(0.0);
             case "Menor":
-               return (avalie(t.getChild(0)) + "").compareTo(avalie(t.getChild(2)) + "") < 0 ? doubleToList(1.0) : doubleToList(0.0);
+               return compareList(avalie(t.getChild(0)), avalie(t.getChild(2))) < 0 ? doubleToList(1.0) : doubleToList(0.0);
             case "MenorIgual":
-               return (avalie(t.getChild(0)) + "").compareTo(avalie(t.getChild(2)) + "") <= 0 ? doubleToList(1.0) : doubleToList(0.0);
+               return compareList(avalie(t.getChild(0)), avalie(t.getChild(2))) <= 0 ? doubleToList(1.0) : doubleToList(0.0);
             case "Maior":
-               return (avalie(t.getChild(0)) + "").compareTo(avalie(t.getChild(2)) + "") > 0 ? doubleToList(1.0) : doubleToList(0.0);
+               return compareList(avalie(t.getChild(0)), avalie(t.getChild(2))) > 0 ? doubleToList(1.0) : doubleToList(0.0);
             case "MaiorIgual":
-               return (avalie(t.getChild(0)) + "").compareTo(avalie(t.getChild(2)) + "") >= 0 ? doubleToList(1.0) : doubleToList(0.0);
+               return compareList(avalie(t.getChild(0)), avalie(t.getChild(2))) >= 0 ? doubleToList(1.0) : doubleToList(0.0);
+
+            //tratar 'list'
+            //------------------------
+            case "Lista":
+               List<Double> llista = new ArrayList<>();
+               for (int i = 0; i < t.getChildCount(); i++) {
+                  if (!t.getChild(i).getText().equals(",")) {
+                     llista.addAll(avalie(t.getChild(i)));
+                  }
+               }
+               return llista;
 
             //tratar comandos 'op'
             //------------------------
@@ -134,19 +164,11 @@ class Main {
                for (Map.Entry<Double, Integer> entry : freqMap.entrySet()) 
                   if (entry.getValue() == maxFrequency) modes.add(entry.getKey());
                return modes;
-            case "Lista":
-               numbers = new ArrayList<>();
-               for (int i = 0; i < t.getChildCount(); i++) {
-                  String child = t.getChild(i).getText();
-                  if (!child.equals(",")) {
-                     double num = Double.parseDouble(child);
-                     numbers.add(num);
-                  }
-               }
-               return numbers;
+            case "Numero":
+               return doubleToList(Double.parseDouble(t.getChild(0).getText()));
             case "Funcao":
                return avalie(t.getChild(0));
-            
+
             //tratar comandos 'func'
             //------------------------
             case "Add":
