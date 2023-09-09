@@ -1,11 +1,20 @@
-x = 0
-while x <= 6:
-    if x % 2 == 0:
-        y.add(x)
+c = 0
+while c < 20:
+    if c % 2 == 0: 
+        p.add(c)
     ; else:
-        z.add(x)
+        i.add(c)
     ;
-    x++
+    c++
 ;
-print y
-print z
+
+for (p, i) -> a:
+    print moda(a)
+    print media(a)
+    print mediana(a)
+    print min(a)
+    print max(a)
+    print variancia(a)
+    print desvio_padrao(a)
+    print null
+;
