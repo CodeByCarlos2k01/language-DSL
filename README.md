@@ -1,7 +1,7 @@
 # Projeto de Compiladores
 
 
-# Do que se trata ?:
+# Do que se trata ?
 
 Neste projeto, fizemos uma Linguagem Específica de Domínio(DSL) voltada para facilitar a realização de tarefas relacionadas a análises estatísticas. A DSL foi criada como parte de um projeto acadêmico com o objetivo de simplificar e agilizar o processo de análise de dados estatísticos, tornando-o mais acessível para usuários com diferentes níveis de experiência em estatística e programação.
 
@@ -13,7 +13,7 @@ Neste projeto, fizemos uma Linguagem Específica de Domínio(DSL) voltada para f
 ```
 java -jar antlr.jar -o src-gen Expr.g4
 ```
-Ao executar este comando, o ANTLR irá ler o Expr.g4arquivo de gramática e gerar o código Java (analisadores e lexers) com base nas regras gramaticais definidas nesse arquivo. O código gerado será colocado no src-gen diretório.
+Ao executar este comando, o ANTLR irá ler o Expr.g4 arquivo de gramática e gerar o código Java (analisadores e lexers) com base nas regras gramaticais definidas nesse arquivo. O código gerado será colocado no src-gen diretório.
 
 
 ## 2. Compilação dos Programas em Java:
@@ -30,4 +30,13 @@ java -cp antlr.jar:classes Main
 ```
 
 Este comando executa a classe Main do compilador. Os arquivos binários das classes estão localizados no diretório "classes".
+
+## Equipe:
+### 1. Carlos Eduardo Cabral
+### 2. Ênio Ferreiro da Silva
+### 3. Lais Silva
+### 4. Pedro Lucas Hirschle
+### 5. Riquelme Lopes da Silva
+
+> Carlos Eduardo Cabral de Farias
 
