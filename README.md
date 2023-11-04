@@ -39,4 +39,4 @@ Este comando executa a classe Main do compilador. Os arquivos binários das clas
   ### 5. Riquelme Lopes da Silva
 
 ## Meu Linkedin:
-[![Meu Linkedin](https://github.com/CodeByCarlos01/language-DSL/assets/107969946/61414064-abc7-4bdd-9b32-f7397a035336)](https://www.linkedin.com/in/carlos-eduh/)
+[![logo](https://github.com/CodeByCarlos01/language-DSL/assets/107969946/61414064-abc7-4bdd-9b32-f7397a035336)](https://www.linkedin.com/in/carlos-eduh/)
