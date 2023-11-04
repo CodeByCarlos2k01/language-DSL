@@ -38,6 +38,5 @@ Este comando executa a classe Main do compilador. Os arquivos binários das clas
   ### 4. Pedro Lucas Hirschle
   ### 5. Riquelme Lopes da Silva
 
-## Meu Linkedin:
-[![logo](https://github.com/CodeByCarlos01/language-DSL/assets/107969946/aefba453-727d-4b05-ad1c-7e932947ba90)]([https://www.linkedin.com/in/carlos-eduh/](https://www.youtube.com/watch?v=T70t3mDiwvg)https://www.youtube.com/watch?v=T70t3mDiwvg)
-
+##  **Meu Linked** ![logo](https://github.com/CodeByCarlos01/language-DSL/assets/107969946/aefba453-727d-4b05-ad1c-7e932947ba90):
+https://www.linkedin.com/in/carlos-eduh/ 👍
